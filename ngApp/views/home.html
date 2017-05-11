@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="carapp1">
+<head>
+    <title>Car Dealership</title>
+    <link href="site.css" rel="stylesheet"/>
+    <script src="ngApp/controllers/controllers.js"></script>
+    <script src="api/cars.js"></script>
+    <script src="api/makes.js"></script>
+</head>
+<body ng-controller="HomeController as controller">
+<div class="title">Thrifty Cars</div>
+<input class="search" ng-model="controller.search"
+       ng-model-options="{debounce:1000}"
+       ng-change="controller.fetch()" />
+
+<ul class="list">
+    <li ng-repeat="car in controller.cars ">
+        {{car.name}}
+    </li>
+</ul>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+      <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+      <script type="text/javascript" src="app.js"></script>
+      <script type="text/javascript" src="carApp.js"></script>
+
+
+
+</body>
+</html>
