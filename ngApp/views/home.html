@@ -1,14 +1,15 @@
 
-<body ng-controller="HomeController as controller">
+<body>
 <div class="title">Thrifty Cars</div>
 
 <div class="dropdown">
+  <button class="btn" ng-click="homecontroller.showModal('Tesla')">Test</button>
   <select ng-change="controller.fetch()" ng-model="controller.search">
   <option id="empty" value="Empty"></option>
-  <option id="all" value="All Cars" onclick="fetch()";>All Cars</option>
-  <option id="BMW" value="BMW" onclick="fetch()">BMW</option>
-  <option ng-change="controller.fetch()" ng-model="controller.search" id="coop" value="Mini Cooper">Mini Cooper</option>
-  <option id="Tesla" value="Tesla" onclick="fetch()";>Tesla</option>
+  <option id="all" value="All Cars">All Cars</option>
+  <option id="BMW" value="BMW">BMW</option>
+  <option id="coop" value="Mini Cooper">Mini Cooper</option>
+  <option id="Tesla" value="Tesla">Tesla</option>
 </select>
 </input>
 </div>
@@ -19,8 +20,9 @@
 
 <ul class="list">
     <li ng-repeat="car in controller.cars ">
-      <button class="btn" ng-click="controller.showModal()">{{car.ShortDescription}}</button>
+      <button data-ng-controller="HomeController" class="btn" ng-click="homecontroller.showModal()">{{car.ShortDescription}}</button>
     </li>
 </ul>
+
 
 </body>
