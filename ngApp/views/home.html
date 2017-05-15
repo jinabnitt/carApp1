@@ -1,20 +1,26 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app="carapp1">
-<head>
-    <title>Car Dealership</title>
-    <link href="site.css" rel="stylesheet"/>
-</head>
+
 <body ng-controller="HomeController as controller">
 <div class="title">Thrifty Cars</div>
+
+<div class="dropdown">
+  <select ng-change="controller.fetch()" ng-model="controller.search">
+  <option id="empty" value="Empty"></option>
+  <option id="all" value="All Cars" onclick="fetch()";>All Cars</option>
+  <option id="BMW" value="BMW" onclick="fetch()">BMW</option>
+  <option ng-change="controller.fetch()" ng-model="controller.search" id="coop" value="Mini Cooper">Mini Cooper</option>
+  <option id="Tesla" value="Tesla" onclick="fetch()";>Tesla</option>
+</select>
+</input>
+</div>
+<br>
 <input class="search" ng-model="controller.search"
        ng-model-options="{debounce:1000}"
        ng-change="controller.fetch()" />
 
 <ul class="list">
     <li ng-repeat="car in controller.cars ">
-        {{car.ShortDescription}}
+      <button class="btn" ng-click="controller.showModal()">{{car.ShortDescription}}</button>
     </li>
 </ul>
 
 </body>
-</html>

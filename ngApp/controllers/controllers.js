@@ -16,6 +16,14 @@ var carapp1;
                         console.log('Could not retrieve cars');
                     });
                 }
+                else if (this.list) {
+                    this.$http.get('api/cars/search/' + this.list)
+                        .then(function (results) {
+                        _this.cars = results.data;
+                    }).catch(function (results) {
+                        console.log('Could not retrieve cars');
+                    });
+                }
             };
             return CarsController;
         }());

@@ -26,6 +26,4 @@ namespace carapp1 {
         $locationProvider.html5Mode(true);
     });
 
-
-
 }
