@@ -10,16 +10,16 @@ namespace carapp1 {
             .state('home', {
                 url: '/',
                 templateUrl: '/ngApp/views/home.html',
-                controller: carapp1.Controllers.CarsController,
+                controller: carapp1.Controllers.HomeController,
                 controllerAs: 'controller'
             })
 
-            // .state('modal', {
-            //     url: '/',
-            //     templateUrl: '/ngApp/views/home.html',
-            //     controller: carapp1.Controllers.HomeController,
-            //     controllerAs: 'homecontroller'
-            // })
+            .state('modal', {
+                url: '/modal',
+                templateUrl: '/ngApp/modal.html',
+                controller: carapp1.Controllers.HomeController,
+                controllerAs: 'modal'
+            })
 
             .state('notFound', {
                 url: '/notFound',

@@ -28,8 +28,12 @@
 .dropdown{
   position: relative;
   top:150px;
-  /*left: 450px;*/
+  left: -60px;
   margin-left: auto;
   margin-right: auto;
   width: 100px;
+}
+
+.modal{
+
 }

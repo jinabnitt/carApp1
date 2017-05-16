@@ -66,6 +66,7 @@ router.post('/cars', function(req, res, next) {
   // update existing car
   if (car.id) {
     let original = findCar(car.id);
+
     original.Make = car.Make;
     original.Price = car.Price;
   // create new car
@@ -93,7 +94,7 @@ router.delete('/cars/:id', function(req, res, next) {
 router.get('/cars/search/:search', function(req, res, next) {
     let search = req.params['search'];
     let matches = cars.filter((car)=>{
-      return car.Make.indexOf(search) == 0;
+      return car.ShortDescription;
     });
     res.json(matches);
 });

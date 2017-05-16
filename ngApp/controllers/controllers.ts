@@ -2,6 +2,10 @@ namespace carapp1.Controllers {
 
        export class HomeController {
 
+         public cars;
+         public search;
+         public list;
+
         public showModal(ShortDescription: string) {
             this.$uibModal.open({
                 templateUrl: 'ngApp/modal.html',
@@ -10,31 +14,9 @@ namespace carapp1.Controllers {
                 resolve: {
                     ShortDescription: () => ShortDescription
                 },
-                size: 'sm'
+                size: 'lg'
             });
         }
-
-        constructor(private $uibModal: angular.ui.bootstrap.IModalService) { }
-    }
-
-    angular.module('carapp1').controller('HomeController', HomeController);
-
-    class DialogController {
-
-        public ok() {
-            this.$uibModalInstance.close();
-        }
-
-        constructor(public ShortDescription: string, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
-    }
-
-    angular.module('carapp1').controller('DialogController', DialogController);
-
-     export class CarsController {
-        public cars;
-        public search;
-        public list;
-
         fetch() {
                 if (this.search) {
                     this.$http.get('api/cars/search/' + this.search)
@@ -51,9 +33,22 @@ namespace carapp1.Controllers {
                             console.log('Could not retrieve cars');
                         });
             }
-          }
 
-            constructor(private $http: ng.IHttpService) {}
           }
-          angular.module('carapp1').controller('CarsController', CarsController);
-      }
+        constructor(private $uibModal: angular.ui.bootstrap.IModalService, private $http: ng.IHttpService) {}
+    }
+
+    angular.module('carapp1').controller('HomeController', HomeController);
+
+    class DialogController {
+
+        public ok() {
+            this.$uibModalInstance.close();
+        }
+
+        constructor(public ShortDescription: string, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
+    }
+
+    angular.module('carapp1').controller('DialogController', DialogController);
+
+  }

@@ -3,8 +3,9 @@ var carapp1;
     var Controllers;
     (function (Controllers) {
         var HomeController = (function () {
-            function HomeController($uibModal) {
+            function HomeController($uibModal, $http) {
                 this.$uibModal = $uibModal;
+                this.$http = $http;
             }
             HomeController.prototype.showModal = function (ShortDescription) {
                 this.$uibModal.open({
@@ -14,29 +15,10 @@ var carapp1;
                     resolve: {
                         ShortDescription: function () { return ShortDescription; }
                     },
-                    size: 'sm'
+                    size: 'lg'
                 });
             };
-            return HomeController;
-        }());
-        Controllers.HomeController = HomeController;
-        angular.module('carapp1').controller('HomeController', HomeController);
-        var DialogController = (function () {
-            function DialogController(ShortDescription, $uibModalInstance) {
-                this.ShortDescription = ShortDescription;
-                this.$uibModalInstance = $uibModalInstance;
-            }
-            DialogController.prototype.ok = function () {
-                this.$uibModalInstance.close();
-            };
-            return DialogController;
-        }());
-        angular.module('carapp1').controller('DialogController', DialogController);
-        var CarsController = (function () {
-            function CarsController($http) {
-                this.$http = $http;
-            }
-            CarsController.prototype.fetch = function () {
+            HomeController.prototype.fetch = function () {
                 var _this = this;
                 if (this.search) {
                     this.$http.get('api/cars/search/' + this.search)
@@ -55,9 +37,20 @@ var carapp1;
                     });
                 }
             };
-            return CarsController;
+            return HomeController;
         }());
-        Controllers.CarsController = CarsController;
-        angular.module('carapp1').controller('CarsController', CarsController);
+        Controllers.HomeController = HomeController;
+        angular.module('carapp1').controller('HomeController', HomeController);
+        var DialogController = (function () {
+            function DialogController(ShortDescription, $uibModalInstance) {
+                this.ShortDescription = ShortDescription;
+                this.$uibModalInstance = $uibModalInstance;
+            }
+            DialogController.prototype.ok = function () {
+                this.$uibModalInstance.close();
+            };
+            return DialogController;
+        }());
+        angular.module('carapp1').controller('DialogController', DialogController);
     })(Controllers = carapp1.Controllers || (carapp1.Controllers = {}));
 })(carapp1 || (carapp1 = {}));
