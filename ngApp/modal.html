@@ -1,12 +1,13 @@
 
 <body ng-controller="HomeController">
-<div class="modal-header">
-    <h3 class="modal-title">{{car.ShortDescription}}</h3>
+<div id="modTit" class="modal-header">
+  {{cars.ShortDescription}}
+
 </div>
-<div class="modal-body">
-    <h1>This is the{{modal.ShortDescription}}</h1>
+<div id="modBod" class="modal-body">
+{{cars.FullDescription}}
 </div>
-<div class="modal-footer">
+<div id="modFoot" class="modal-footer">
     <button class="btn btn-primary" ng-click="modal.ok()">OK</button>
 </div>
 </body>

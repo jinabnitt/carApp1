@@ -7,16 +7,26 @@ var carapp1;
                 this.$uibModal = $uibModal;
                 this.$http = $http;
             }
-            HomeController.prototype.showModal = function (ShortDescription) {
+            HomeController.prototype.showModal = function (id) {
+                var _this = this;
                 this.$uibModal.open({
                     templateUrl: 'ngApp/modal.html',
                     controller: 'DialogController',
                     controllerAs: 'modal',
                     resolve: {
-                        ShortDescription: function () { return ShortDescription; }
+                        id: function () { return id; }
                     },
                     size: 'lg'
                 });
+                if (this.car) {
+                    this.$http.get('api/cars/' + this.car)
+                        .then(function (results) {
+                        _this.cars = results.data;
+                        console.log(results.data);
+                    }).catch(function (results) {
+                        console.log('Could not retrieve cars');
+                    });
+                }
             };
             HomeController.prototype.fetch = function () {
                 var _this = this;
@@ -42,8 +52,8 @@ var carapp1;
         Controllers.HomeController = HomeController;
         angular.module('carapp1').controller('HomeController', HomeController);
         var DialogController = (function () {
-            function DialogController(ShortDescription, $uibModalInstance) {
-                this.ShortDescription = ShortDescription;
+            function DialogController(id, $uibModalInstance) {
+                this.id = id;
                 this.$uibModalInstance = $uibModalInstance;
             }
             DialogController.prototype.ok = function () {

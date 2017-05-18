@@ -94,7 +94,7 @@ router.delete('/cars/:id', function(req, res, next) {
 router.get('/cars/search/:search', function(req, res, next) {
     let search = req.params['search'];
     let matches = cars.filter((car)=>{
-      return car.ShortDescription;
+      return car.Make.indexOf(search) == 0;
     });
     res.json(matches);
 });
@@ -107,3 +107,9 @@ function findCar(id:number) {
 }
 
 export = router;
+
+// let title = <HTMLElement>document.getElementById("modTit");
+// let body = <HTMLElement>document.getElementById("modBod");
+// let printMod = function (){
+//   title.innerHTML = ("<img src='ImageUrl' style='width:25px;height:25px;'>" + cars[2] )
+// }

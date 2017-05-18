@@ -85,7 +85,7 @@ router.delete('/cars/:id', function (req, res, next) {
 router.get('/cars/search/:search', function (req, res, next) {
     var search = req.params['search'];
     var matches = cars.filter(function (car) {
-        return car.ShortDescription;
+        return car.Make.indexOf(search) == 0;
     });
     res.json(matches);
 });

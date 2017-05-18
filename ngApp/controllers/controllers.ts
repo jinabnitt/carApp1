@@ -5,19 +5,31 @@ namespace carapp1.Controllers {
          public cars;
          public search;
          public list;
+         public id;
+         public car;
 
-        public showModal(ShortDescription: string) {
+        public showModal(id: number) {
             this.$uibModal.open({
                 templateUrl: 'ngApp/modal.html',
                 controller: 'DialogController',
                 controllerAs: 'modal',
                 resolve: {
-                    ShortDescription: () => ShortDescription
+                    id:() => id
                 },
                 size: 'lg'
-            });
+            })
+
+           if (this.car) {
+            this.$http.get('api/cars/' + this.car)
+              .then((results) => {
+                this.cars = results.data;
+                console.log(results.data);
+              }).catch((results) => {
+                console.log('Could not retrieve cars');
+              });
+          }
         }
-        fetch() {
+        public fetch() {
                 if (this.search) {
                     this.$http.get('api/cars/search/' + this.search)
                         .then((results) => {
@@ -46,7 +58,7 @@ namespace carapp1.Controllers {
             this.$uibModalInstance.close();
         }
 
-        constructor(public ShortDescription: string, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
+        constructor(public id: number, private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance) { }
     }
 
     angular.module('carapp1').controller('DialogController', DialogController);
