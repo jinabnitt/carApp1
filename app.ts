@@ -31,12 +31,12 @@ app.use('/users', users);
 
 
 // APIs
-app.use('/api', require('./api/makes'));
+// app.use('/api', require('./api/makes'));
 app.use('/api', require('./api/cars'));
-app.use('/api', require('./api/movies'));
-app.use('/api', require('./api/genres'));
-app.use('/api', require('./api/guestbook'));
-app.use('/api', require('./api/deepThought'));
+// app.use('/api', require('./api/movies'));
+// app.use('/api', require('./api/genres'));
+// app.use('/api', require('./api/guestbook'));
+// app.use('/api', require('./api/deepThought'));
 
 // redirect 404 to home for the sake of AngularJS client-side routes
 app.get('/*', function(req, res, next) {

@@ -90,11 +90,21 @@ router.delete('/cars/:id', function(req, res, next) {
   }
 });
 
+router.get('/makes/:id', function (req, res, next) {
+    let id = parseInt(req.params['id']);
+    let car = findCar(id);
+    if (car) {
+        res.json(car);
+    } else {
+        res.sendStatus(404);
+    }
+});
+
 /* find matching cars */
 router.get('/cars/search/:search', function(req, res, next) {
     let search = req.params['search'];
     let matches = cars.filter((car)=>{
-      return car.Make.indexOf(search) == 0;
+      return car.ShortDescription.indexOf(search) == 0;
     });
     res.json(matches);
 });

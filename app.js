@@ -19,12 +19,7 @@ app.use('/ngApp', express.static(path.join(__dirname, 'ngApp')));
 app.use('/api', express.static(path.join(__dirname, 'api')));
 app.use('/', index_1.default);
 app.use('/users', users_1.default);
-app.use('/api', require('./api/makes'));
 app.use('/api', require('./api/cars'));
-app.use('/api', require('./api/movies'));
-app.use('/api', require('./api/genres'));
-app.use('/api', require('./api/guestbook'));
-app.use('/api', require('./api/deepThought'));
 app.get('/*', function (req, res, next) {
     if (/.js|.html|.css|templates|js|scripts/.test(req.path) || req.xhr) {
         return next({ status: 404, message: 'Not Found' });

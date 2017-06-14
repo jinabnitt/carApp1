@@ -38,12 +38,15 @@ var carapp1;
                         console.log('Could not retrieve cars');
                     });
                 }
-                else if (this.list) {
-                    this.$http.get('api/cars/search/' + this.list)
+            };
+            HomeController.prototype.getMake = function () {
+                var _this = this;
+                if (this.search) {
+                    this.$http.get('api/makes/search/' + this.search)
                         .then(function (results) {
-                        _this.cars = results.data;
+                        _this.makes = results.data;
                     }).catch(function (results) {
-                        console.log('Could not retrieve cars');
+                        console.log('Could not retrieve makes');
                     });
                 }
             };

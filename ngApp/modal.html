@@ -1,11 +1,11 @@
 
-<body ng-controller="HomeController">
+<body ng-controller="HomeController as controller">
 <div id="modTit" class="modal-header">
-  {{cars.ShortDescription}}
+  {{car.ShortDescription}}
 
 </div>
 <div id="modBod" class="modal-body">
-{{cars.FullDescription}}
+{{modal.FullDescription}}
 </div>
 <div id="modFoot" class="modal-footer">
     <button class="btn btn-primary" ng-click="modal.ok()">OK</button>

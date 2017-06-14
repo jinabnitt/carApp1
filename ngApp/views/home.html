@@ -3,13 +3,11 @@
 <div class="title">Thrifty Cars</div>
 
 <div class="dropdown">
-  <select id="select" ng-change="controller.fetch()" ng-model="controller.search">
+  <select id="select" ng-change="controller.getMake()" ng-model="controller.search" >
   <option id="empty" value="Empty">Choose Car</option>
-  <option id="GrnMCS" value="M">Green Mini Cooper S</option>
-  <option id="OrgMCS" value="M">Orange Mini Cooper S</option>
-  <option id="BlkMCC" value="M">Black Mini Cooper Countryman</option>
-  <option id="TesMS" value="T">Tesla Model S</option>
-  <option id="TesMX" value="T">Tesla Model X</option>
+  <option id="GrnMCS" value="3">Mini Cooper</option>
+  <option id="TesMS" value="2">Tesla</option>
+  <option id="BMW" value="1">BMW</option>
 </select>
 </input>
 </div>

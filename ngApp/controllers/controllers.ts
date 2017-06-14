@@ -7,6 +7,7 @@ namespace carapp1.Controllers {
          public list;
          public id;
          public car;
+         public makes;
 
         public showModal(id: number) {
             this.$uibModal.open({
@@ -37,16 +38,28 @@ namespace carapp1.Controllers {
                         }).catch((results) => {
                             console.log('Could not retrieve cars');
                         });
-                } else if(this.list) {
-                    this.$http.get('api/cars/search/' + this.list)
-                        .then((results) => {
-                            this.cars = results.data;
-                        }).catch((results) => {
-                            console.log('Could not retrieve cars');
-                        });
-            }
+                }
+            //     else if(this.list) {
+            //         this.$http.get('api/makes/search/' + this.list)
+            //             .then((results) => {
+            //                 this.makes = results.data;
+            //             }).catch((results) => {
+            //                 console.log('Could not retrieve cars');
+            //             });
+            // }
 
           }
+          public getMake() {
+                  if (this.search) {
+                      this.$http.get('api/makes/search/' + this.search)
+                          .then((results) => {
+                              this.makes = results.data;
+                          }).catch((results) => {
+                              console.log('Could not retrieve makes');
+                          });
+                  }
+
+            }
         constructor(private $uibModal: angular.ui.bootstrap.IModalService, private $http: ng.IHttpService) {}
     }
 

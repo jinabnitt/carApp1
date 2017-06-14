@@ -82,10 +82,20 @@ router.delete('/cars/:id', function (req, res, next) {
         res.sendStatus(200);
     }
 });
+router.get('/makes/:id', function (req, res, next) {
+    var id = parseInt(req.params['id']);
+    var car = findCar(id);
+    if (car) {
+        res.json(car);
+    }
+    else {
+        res.sendStatus(404);
+    }
+});
 router.get('/cars/search/:search', function (req, res, next) {
     var search = req.params['search'];
     var matches = cars.filter(function (car) {
-        return car.Make.indexOf(search) == 0;
+        return car.ShortDescription.indexOf(search) == 0;
     });
     res.json(matches);
 });
